@@ -127,4 +127,14 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionEntrance()
+    {
+        return $this->render('entrance');
+    }
+
+    public function actionRegistration()
+    {
+        return $this->render('registration');
+    }
 }
