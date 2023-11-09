@@ -221,7 +221,7 @@ input, select {
     position: absolute;
     width: 20px;
     height: 14px;
-    background: url(../../web/assets/arr.svg);
+    background: url(../../web/img/arr.svg);
     background-position: center;
     background-size: cover;
 }

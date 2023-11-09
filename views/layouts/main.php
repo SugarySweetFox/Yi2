@@ -33,7 +33,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <div class="container">
         <div class="header">
-            <img src="../../web/assets/logo.svg" alt="" class="logo">
+            <img src="../../web/img/logo.svg" alt="" class="logo">
             <div class="menu">
                 <a href="">Главная</a>
                 <a href="">Модели</a>

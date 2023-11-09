@@ -19,7 +19,7 @@ $this->title = 'My Yii Application';
         </div>
     </div>
     <div class="right_index">
-        <img src="../../web/assets/pic_index.png" alt="">
+        <img src="../../web/img/pic_index.png" alt="">
     </div> 
 </div>
 
