@@ -3,30 +3,38 @@
 namespace app\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
  *
  * @property int $id
- * @property string $name
- * @property string $login
- * @property int $password
- * @property string $birthday
- * @property int $city_id
- * @property int $activities_id
- * @property int $gender_id
+ * @property string $username
+ * @property string|null $name
+ * @property string $password_hash
+ * @property string|null $birthday
+ * @property int|null $city_id
+ * @property int|null $activities_id
+ * @property int|null $gender
  * @property string|null $photo
- * @property int $role_id
+ * @property string|null $password_reset_token
+ * @property string $email
+ * @property string|null $auth_key
+ * @property string|null $created_at
+ * @property string|null $updated_at
  *
  * @property Activities $activities
  * @property City $city
- * @property Gender $gender
  * @property Likes[] $likes
  * @property Post[] $posts
- * @property Role $role
  */
-class User extends \yii\db\ActiveRecord
+class User extends ActiveRecord implements IdentityInterface
 {
+ 
+
     /**
      * {@inheritdoc}
      */
@@ -41,15 +49,14 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'login', 'password', 'birthday', 'city_id', 'activities_id', 'gender_id', 'role_id'], 'required'],
-            [['password', 'city_id', 'activities_id', 'gender_id', 'role_id'], 'integer'],
-            [['birthday'], 'safe'],
-            [['name', 'login'], 'string', 'max' => 20],
-            [['photo'], 'string', 'max' => 100],
-            [['role_id'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['role_id' => 'id']],
+            [['username', 'password_hash', 'email'], 'required'],
+            [['birthday', 'created_at', 'updated_at'], 'safe'],
+            [['city_id', 'activities_id', 'gender'], 'integer'],
+            [['username', 'name', 'password_reset_token'], 'string', 'max' => 20],
+            [['password_hash'], 'string', 'max' => 255],
+            [['photo', 'email', 'auth_key'], 'string', 'max' => 100],
             [['activities_id'], 'exist', 'skipOnError' => true, 'targetClass' => Activities::class, 'targetAttribute' => ['activities_id' => 'id']],
             [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => City::class, 'targetAttribute' => ['city_id' => 'id']],
-            [['gender_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gender::class, 'targetAttribute' => ['gender_id' => 'id']],
         ];
     }
 
@@ -60,15 +67,19 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'username' => 'Имя',
             'name' => 'Name',
-            'login' => 'Login',
-            'password' => 'Password',
+            'password_hash' => 'Password Hash',
             'birthday' => 'Birthday',
             'city_id' => 'City ID',
             'activities_id' => 'Activities ID',
-            'gender_id' => 'Gender ID',
+            'gender' => 'Gender',
             'photo' => 'Photo',
-            'role_id' => 'Role ID',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'auth_key' => 'Auth Key',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 
@@ -131,4 +142,85 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Role::class, ['id' => 'role_id']);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne(['id' => $id]);
+    }
+ 
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }
+ 
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+ 
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
+ 
+    /**
+     * @inheritdoc
+     */
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+ 
+    /**
+     * @inheritdoc
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+ 
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+ 
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        return $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+ 
+    /**
+     * Generates "remember me" authentication key
+     */
+    public function generateAuthKey()
+    {
+        return $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+ 
 }

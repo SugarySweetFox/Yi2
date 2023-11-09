@@ -3,13 +3,16 @@
 namespace app\controllers;
 
 use app\models\City;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\SignupForm;
 
 class SiteController extends Controller
 {
@@ -63,7 +66,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $city = City::find()->all();
-        return $this->render('index', $params=['cities'=>$city]);
+        return $this->render('index', $params = ['cities' => $city]);
     }
 
     /**
@@ -137,4 +140,61 @@ class SiteController extends Controller
     {
         return $this->render('registration');
     }
+
+    public function actionPage_models()
+    {
+        return $this->render('page_models');
+    }
+
+    public function actionAddAdmin()
+    {
+        $model = User::find()->where(['username' => 'admin'])->one();
+        if (empty($model)) {
+            $user = new User();
+            $user->login = "dfdf";
+            $user->birthday = "12.02.23";
+            $user->city_id = "1";
+            $user->activities_id = "1";
+            $user->gender_id = "1";
+            $user->role_id = "1";
+            $user->username = 'admin';
+            $user->password_reset_token = 'admin';
+            $user->status = '1';
+            $user->created_at = '1';
+            $user->updated_at = '1';
+            $user->password_hash = $user->setPassword(56341);
+            $user->auth_key = $user->generateAuthKey();
+            $user->email = 'admin@кодер.укр';
+            $user->setPassword('admin');
+            $user->generateAuthKey();
+
+            if ($user->save()) {
+
+                echo 'good';
+            }
+            VarDumper::dump($user->errors);
+        }
+    }
+
+
+    public function actionSignup()
+    {
+        $model = new User();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->password_hash = $model->setPassword($model->password_hash);
+            $model->auth_key = $model->generateAuthKey();
+            if ($user = $model->save()) {
+                if (Yii::$app->getUser()->login(User::findOne($model->id))) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
+
 }

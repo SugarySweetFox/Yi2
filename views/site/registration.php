@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../web/css/style.css">
+ 
 
 <div class="registration">
     <h3>Регистрация</h3>

@@ -5,10 +5,11 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
-use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
+use yii\widgets\Breadcrumbs;
+use yii\helpers\Html;
+use yii\widgets\Nav;
+use yii\widgets\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -35,19 +36,19 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="header">
             <img src="../../web/img/logo.svg" alt="" class="logo">
             <div class="menu">
-                <a href="">Главная</a>
-                <a href="">Модели</a>
+                <a href="<?= Url::to(['site/index'])  ?>">Главная</a>
+                <a href="<?= Url::to(['site/page_models'])  ?>">Модели</a>
                 <a href="">Фотографы</a>
                 <a href="">Избранное</a>
-                <a href="">Вход</a>
-                <a href="">Регистрация</a>
+                <a href="<?= Url::to(['site/entrance'])  ?>">Вход</a>
+                <a href="<?= Url::to(['/site/registration'])  ?>">Регистрация</a>
             </div>
         </div>  
     </div>
 </header>
 
 <main id="main" class="flex-shrink-0" role="main">
-    <div class="container">
+    <div class="container-fluid">
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
         <?php endif ?>
@@ -69,7 +70,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div>
             <div class="left_footer">
                 <p class="white">implement.the.idea@gmail.com</p>
-                <img src="../../web/assets/vk.svg" alt="" class="vk">
+                <img src="../../web/img/vk.svg" alt="" class="vk">
             </div>
         </div>
     </div>
