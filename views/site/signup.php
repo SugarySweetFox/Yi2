@@ -13,11 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="registration">
     <h3>Регистрация</h3>
     <div class="div_input">
-
-
         <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-        <?= $form->field($model, 'name')->textInput() ?>
         <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => '']) ?>
+        <?= $form->field($model, 'name')->textInput() ?>
         <?= $form->field($model, 'email')->textInput(['class' => '']) ?>
         <?= $form->field($model, 'birthday')->textInput(['class' => '']) ?>
         <?= $form->field($model, 'city_id')->dropDownList(ArrayHelper::map(City::find()->all(), "id", "city"),['class' => '']) ?>
@@ -25,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'gender')->dropDownList([true => "Мальчик", false => "Девочка"],['class' => '']) ?>
         <?= $form->field($model, 'password_hash')->passwordInput(['class' => '']) ?>
         <div class="div_btn">
-            <?= Html::submitButton('Signup', ['class' => '', 'name' => 'signup-button']) ?>
+            <?= Html::submitButton('Зарегистрироваться', ['class' => '', 'name' => 'signup-button']) ?>
         </div>
         <?php ActiveForm::end(); ?>
     </div>

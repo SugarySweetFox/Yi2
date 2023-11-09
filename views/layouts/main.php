@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <a href="">Фотографы</a>
                 <a href="">Избранное</a>
                 <a href="<?= Url::to(['site/entrance'])  ?>">Вход</a>
-                <a href="<?= Url::to(['/site/registration'])  ?>">Регистрация</a>
+                <a href="<?= Url::to(['/site/signup'])  ?>">Регистрация</a>
             </div>
         </div>  
     </div>
