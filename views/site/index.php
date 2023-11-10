@@ -18,12 +18,12 @@ $this->title = 'My Yii Application';
                 <p class="grey">Что бы реализовать свои идеи в полном масштабе, вам нужно просто зарегистрироваться</p>
             </div>
             <div class="bottom_left_index">
-                <a href="<?= Url::to(['site/registration'])?>"><button>Регистрация</button></a>
-                <a href="<?= Url::to(['site/entrance'])?>"><button class="border_btn">Вход</button></a>
+                <a href="<?= Url::to(['/site/signup'])  ?>"><button>Регистрация</button></a>
+                <a href="<?= Url::to(['/site/login'])?>"><button class="border_btn">Вход</button></a>
             </div>
         </div>
         <div class="right_index">
-            <img src="../../web/img/pic_index.png" alt="">
+            <img src="<?= Url::to(['/img/pic_index.png'])  ?>" alt="">
         </div> 
     </div>
 

@@ -11,11 +11,11 @@
                 <div class="top_post">
                     <div class="photo">
                         <div class="div_okr"></div>
-                        <img src="" alt="">
+                        <img src="" alt="" class="img_photo">
                         <div class="div_border"></div>
                     </div>
                     <div class="content">
-                        <h3>DGSGS</h3>
+                        <h3 class="left">DGSGS</h3>
                         <div class="contrnt_text">
                             <div class="text_post">
                                 <h5>Город:</h5>

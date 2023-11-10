@@ -14,8 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3>Регистрация</h3>
     <div class="div_input">
         <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => '']) ?>
-        <?= $form->field($model, 'name')->textInput() ?>
+        <?= $form->field($model, 'name')->textInput(['autofocus' => true,'class' => '']) ?>
+        <?= $form->field($model, 'username')->textInput() ?>
         <?= $form->field($model, 'email')->textInput(['class' => '']) ?>
         <?= $form->field($model, 'birthday')->textInput(['class' => '']) ?>
         <?= $form->field($model, 'city_id')->dropDownList(ArrayHelper::map(City::find()->all(), "id", "city"),['class' => '']) ?>

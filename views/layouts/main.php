@@ -34,14 +34,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <div class="container">
         <div class="header">
-            <img src="../../web/img/logo.svg" alt="" class="logo">
+            <img src="<?= Url::to(['/img/logo.svg'])  ?>" alt="" class="logo">
             <div class="menu">
-                <a href="<?= Url::to(['site/index'])  ?>">Главная</a>
-                <a href="<?= Url::to(['site/page_models'])  ?>">Модели</a>
+                <a href="<?= Url::to(['/site/index'])  ?>">Главная</a>
+                <a href="<?= Url::to(['/site/page_models'])  ?>">Модели</a>
                 <a href="">Фотографы</a>
                 <a href="">Избранное</a>
-                <a href="<?= Url::to(['site/entrance'])  ?>">Вход</a>
+                <a href="<?= Url::to(['/site/login'])  ?>">Вход</a>
                 <a href="<?= Url::to(['/site/signup'])  ?>">Регистрация</a>
+                <?= Html::a('Выход', ['site/logout'], ['data' => ['method' => 'post']]) ?>
             </div>
         </div>  
     </div>
@@ -70,7 +71,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div>
             <div class="left_footer">
                 <p class="white">implement.the.idea@gmail.com</p>
-                <img src="../../web/img/vk.svg" alt="" class="vk">
+                <img src="<?= Url::to(['/img/vk.svg'])  ?>" alt="" class="vk">
             </div>
         </div>
     </div>
