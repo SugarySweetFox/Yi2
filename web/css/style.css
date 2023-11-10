@@ -358,3 +358,11 @@ select {
 .left {
     text-align: left;
 }
+
+.img_like {
+    float: right;
+}
+
+.content {
+    width: calc(100%-325px);
+}

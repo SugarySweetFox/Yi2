@@ -1,4 +1,6 @@
-
+<?
+use yii\helpers\Url;
+?>
 
 <link rel="stylesheet" href="../../web/css/style.css">
 
@@ -35,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <img src="" alt="">
+                    <img src="<?= Url::to(['/img/like.svg'])  ?>" alt="" class="img_like">
                 </div>
                 <div class="bottom_post">
                     <button>Написать</button>
