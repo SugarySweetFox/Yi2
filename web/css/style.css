@@ -101,6 +101,7 @@ h5 {
 footer {
     width: 100%;
     background-color: #46312C;
+    margin-top: 100px;
 }
 
 .footer {
@@ -196,6 +197,7 @@ button {
     max-width: 100%;
     margin: 0 auto;
     gap: 40px;
+    margin-bottom: 100px;
 }
 
 input, select {
