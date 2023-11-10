@@ -38,11 +38,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             <div class="menu">
                 <a href="<?= Url::to(['/site/index'])  ?>">Главная</a>
                 <a href="<?= Url::to(['/site/page_models'])  ?>">Модели</a>
-                <a href="">Фотографы</a>
+                <a href="<?= Url::to(['/site/page_photograf'])  ?>">Фотографы</a>
                 <a href="">Избранное</a>
+                <?php if (Yii::$app->user->isGuest) { ?>
                 <a href="<?= Url::to(['/site/login'])  ?>">Вход</a>
                 <a href="<?= Url::to(['/site/signup'])  ?>">Регистрация</a>
+                    <?php }else { ?>
                 <?= Html::a('Выход', ['site/logout'], ['data' => ['method' => 'post']]) ?>
+                <?php } ?>
             </div>
         </div>  
     </div>

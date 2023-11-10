@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\City;
+use app\models\Post;
 use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -143,7 +144,14 @@ class SiteController extends Controller
 
     public function actionPage_models()
     {
-        return $this->render('page_models');
+        $posts = Post::find()->all();
+        return $this->render('page_models',["posts" => $posts]);
+    }
+
+    public function actionPage_photograf()
+    {
+        $posts = Post::find()->all();
+        return $this->render('page_photograf',["posts" => $posts]);
     }
 
     public function actionAddAdmin()

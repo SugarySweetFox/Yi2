@@ -69,6 +69,14 @@ h1 {
     line-height: 120%;
 }
 
+h2 {
+    color: #28272C;
+    font-family: Playfair Display;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+}
+
 h3 {
     color: #28272C;
     font-family: Playfair Display;
@@ -157,6 +165,7 @@ main, body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 40px;
 }
 
 .bottom_left_index {
@@ -314,6 +323,9 @@ select {
 .bottom_post {
     padding-top: 5px;
     float: right;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .form-group {
@@ -340,6 +352,7 @@ select {
     position: absolute;
     margin-top: 40px;
     margin-left: 40px;
+    object-fit: cover;
 }
 
 .div_border {
@@ -361,8 +374,10 @@ select {
 
 .img_like {
     float: right;
+    height: 40px;
 }
 
 .content {
-    width: calc(100%-325px);
+    width: calc(100% - 325px);
+    
 }

@@ -31,12 +31,16 @@ use yii\helpers\Html;
                                 <h4><?=$item->city->city?></h4>
                             </div>
                             <div class="text_post">
-                                <h5>Возраст:</h5>
-                                <h4><?=$item->age?></h4>
+                                <h5>Тип съемки:</h5>
+                                <h4><?=$item->type->name?></h4>
                             </div>
                             <div class="text_post">
                                 <h5>Ищу:</h5>
                                 <h4><?=$item->activities->name?></h4>
+                            </div>
+                            <div class="text_post">
+                                <h5>Кол-во человек:</h5>
+                                <h4><?=$item->kol_vo?></h4>
                             </div>
                             <div class="text_post">
                                 <h5>О себе:</h5>
@@ -47,6 +51,7 @@ use yii\helpers\Html;
                     <img src="<?= Url::to(['/img/like.svg'])  ?>" alt="" class="img_like">
                 </div>
                 <div class="bottom_post">
+                    <button class="border_btn">Портфолио</button>
                     <button>Написать</button>
                 </div>
             </div>
