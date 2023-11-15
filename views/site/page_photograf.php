@@ -55,10 +55,11 @@ use yii\helpers\Html;
                     <button>Написать</button>
                 </div>
             </div>
-        </div> 
-        <?php
+            <?php
         }
         ?>  
+        </div> 
+
     </div>
 
 </div>

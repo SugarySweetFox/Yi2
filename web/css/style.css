@@ -297,7 +297,7 @@ select {
     width: 80%;
 }
 
-.post {
+.post, .profile_div {
     padding: 40px;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
@@ -322,7 +322,7 @@ select {
 
 .bottom_post {
     padding-top: 5px;
-    float: right;
+    justify-content: flex-end;
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -380,4 +380,44 @@ select {
 .content {
     width: calc(100% - 325px);
     
+}
+
+.profile {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile_div {
+    background: rgba(132, 89, 70, 0.24);
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(25px);
+    margin: 0 auto;
+    padding: 100px;
+}
+
+.profile_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.div_first_btn {
+    background: rgba(132, 89, 70, 0.24);
+    backdrop-filter: blur(25px);
+    width: 190px;
+    height: 34px;
+    padding-top: 16px;
+}
+
+.post_btn {
+    border-top: 2px solid #845946;
+    border-right: 2px solid #845946;
+    border-left: 2px solid #845946;
+    width: 190px;
+    height: 50px;
+    background: none;
+    color: #28272C;
+}
+
+.center {
+    text-align: center;
 }

@@ -17,6 +17,8 @@ use app\models\SignupForm;
 
 class SiteController extends Controller
 {
+
+
     /**
      * {@inheritdoc}
      */
@@ -142,15 +144,28 @@ class SiteController extends Controller
         return $this->render('registration');
     }
 
+    public function actionProfile()
+    {
+        $user = User::find()
+        ->where(['id' => Yii::$app->user->id])
+        ->one();
+        return $this->render('profile',["user" => $user]);
+    }
+
     public function actionPage_models()
     {
-        $posts = Post::find()->all();
+        $posts = Post::find()
+        ->where(['activities_id' => 2])
+        ->all();
         return $this->render('page_models',["posts" => $posts]);
+
     }
 
     public function actionPage_photograf()
     {
-        $posts = Post::find()->all();
+        $posts = Post::find()
+        ->where(['activities_id' => 1])
+        ->all();
         return $this->render('page_photograf',["posts" => $posts]);
     }
 
