@@ -52,7 +52,7 @@ use yii\helpers\Html;
                     </div>
                 </div>
                 <div class="bottom_post">
-                    <button>Редактировать</button>
+                <a href="<?= Url::to(['/user/update?id='.$user->id])?>"><button>Редактировать</button></a>
                 </div>
             </div>
         </div> 

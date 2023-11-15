@@ -7,6 +7,7 @@ use app\models\Post;
 use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
@@ -151,6 +152,13 @@ class SiteController extends Controller
         ->all();
         return $this->render('you_post',["posts" => $posts]);
 
+    }
+
+    public function actionDelete($id)
+    {
+        // $this->findModel($id)->delete();
+        Post::findOne($id)->delete();
+        return $this->redirect(Url::to(['/site/you_post']));
     }
 
     public function actionProfile()

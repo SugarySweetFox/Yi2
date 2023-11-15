@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Post;
 use app\models\PostSearch;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -71,7 +72,8 @@ class PostController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                // return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(Url::to(['/site/you_post']));
             }
         } else {
             $model->loadDefaultValues();
@@ -94,7 +96,8 @@ class PostController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            // return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::to(['/site/you_post']));
         }
 
         return $this->render('update', [
@@ -113,7 +116,7 @@ class PostController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::to(['/site/you_post']));
     }
 
     /**

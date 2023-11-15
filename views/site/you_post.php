@@ -55,10 +55,16 @@ use yii\helpers\Html;
                             </div>
                         </div>
                     </div>
-                    <img src="<?= Url::to(['/img/like.svg'])  ?>" alt="" class="img_like">
+                    <?= Html::a('<img src="'.Url::to(['/img/del.svg']).'" alt="" class="img_like">', ['delete', 'id' => $item->id], [
+                        'class' => 'delete',
+                        'data' => [
+                            'confirm' => 'Are you sure you want to delete this item?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
                 </div>
                 <div class="bottom_post">
-                    <button>Редактировать</button>
+                <a href="<?= Url::to(['/post/update?id='.$item->id])?>"><button class="border_btn">Редактировать</button></a>
                 </div>
             </div>
                                 <?php  else : ?>
@@ -92,10 +98,16 @@ use yii\helpers\Html;
                             </div>
                         </div>
                     </div>
-                    <img src="<?= Url::to(['/img/like.svg'])  ?>" alt="" class="img_like">
+                    <?= Html::a('<img src="'.Url::to(['/img/del.svg']).'" alt="" class="img_like">', ['delete', 'id' => $item->id], [
+                        'class' => 'delete',
+                        'data' => [
+                            'confirm' => 'Are you sure you want to delete this item?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
                 </div>
                 <div class="bottom_post">
-                    <button>Редактировать</button>
+                <a href="<?= Url::to(['/post/update?id='.$item->id])?>"><button class="border_btn">Редактировать</button></a>
                 </div>
             </div>
                         <?php endif; ?>
@@ -104,6 +116,9 @@ use yii\helpers\Html;
             <?php
         }
         ?>  
+                <div class="center_btn">
+                <a href="<?= Url::to(['/post/create'])?>"><button>Добавить</button></a>
+                </div>
         </div> 
         
     </div>

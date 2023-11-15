@@ -39,7 +39,7 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['city_id', 'about_me', 'activities_id', 'type_id', 'user_id'], 'required'],
-            [['city_id', 'activities_id', 'type_id', 'user_id', 'kol_vo'], 'integer'],
+            [['city_id', 'activities_id', 'type_id', 'user_id', 'kol_vo', 'age'], 'integer'],
             [['about_me'], 'string'],
             [['photo'], 'string', 'max' => 100],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => Type::class, 'targetAttribute' => ['type_id' => 'id']],
@@ -63,6 +63,7 @@ class Post extends \yii\db\ActiveRecord
             'type_id' => 'Type ID',
             'user_id' => 'User ID',
             'kol_vo' => 'Kol Vo',
+            'age' => 'Age',
         ];
     }
 
