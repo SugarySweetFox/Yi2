@@ -12,7 +12,7 @@ use yii\helpers\Html;
                 <div class="div_first_btn">
                     <p class="center">Профиль</p>
                 </div>
-                <button class="post_btn">Ваши объявления</button>
+                <a href="<?= Url::to(['/site/you_post'])?>"><button class="post_btn">Ваши объявления</button></a>
             </div>
             <div class="profile_div">
                 <div class="top_post">

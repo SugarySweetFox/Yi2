@@ -288,13 +288,17 @@ select {
     padding-right: 0;
 }
 
-.posts {
+.posts, .posts_profile {
     margin: 0 auto;
     margin-top: 60px;
     display: flex;
     flex-direction: column;
     gap: 40px;
     width: 80%;
+}
+
+.posts_profile {
+    width: 90%;
 }
 
 .post, .profile_div {

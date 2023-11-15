@@ -144,6 +144,15 @@ class SiteController extends Controller
         return $this->render('registration');
     }
 
+    public function actionYou_post()
+    {
+        $posts = Post::find()
+        ->where(['user_id' =>  Yii::$app->user->id])
+        ->all();
+        return $this->render('you_post',["posts" => $posts]);
+
+    }
+
     public function actionProfile()
     {
         $user = User::find()
